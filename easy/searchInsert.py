@@ -1,5 +1,7 @@
 
 from typing import List
+
+# With O(log n) time complexity
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
 
