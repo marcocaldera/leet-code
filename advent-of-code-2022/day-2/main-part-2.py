@@ -18,11 +18,9 @@ with open('input.txt', mode='r') as f:
                 total += scores['paper']
 
             elif alphabet_1[player_1_move] == 'paper':
-                # win
                 total += scores['rock']
 
             elif alphabet_1[player_1_move] == 'rock':
-                # win
                 total += scores['scissors']
 
         elif alphabet_2[player_2_move] == 'draw':
@@ -36,11 +34,9 @@ with open('input.txt', mode='r') as f:
                 total += scores['rock']
 
             elif alphabet_1[player_1_move] == 'paper':
-                # win
                 total += scores['scissors']
 
             elif alphabet_1[player_1_move] == 'rock':
-                # win
                 total += scores['paper']
 
 
