@@ -85,7 +85,7 @@ while round < 20:
           new_worry_level = operators[operation](op1, op2)
 
           # Monkey gets bored with the item. Divide the 'new_worry_level' by 3 and round down
-          new_worry_level = operators["/"](new_worry_level, 3)
+          # new_worry_level = operators["/"](new_worry_level, 3)
           
           # Check if current worry level is divisible by 'divided_by'
           divided_by = monkey['test']
