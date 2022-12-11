@@ -11,7 +11,7 @@ with open('input.txt', mode='r') as f:
         unique_set_of_values = list(set(start_of_packet))
 
         if len(start_of_packet) == len(unique_set_of_values):
-            if len(unique_set_of_values) == 14:
+            if len(unique_set_of_values) == 14: # The only diff from main-part-1
                 result = idx + 1
                 break
         else:
