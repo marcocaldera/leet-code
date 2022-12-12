@@ -1,6 +1,7 @@
 # https://adventofcode.com/2022/day/11
 import operator
 import copy
+import math
 
 monkeys = {}
 current_monkey = ''
@@ -29,7 +30,7 @@ with open('input.txt', mode='r') as f:
         elif 'Test' in instruction:
 
             divided_by = int(instruction.split('Test:')[-1].split()[-1])
-            monkeys[current_monkey]['test'] = divided_by
+            monkeys[current_monkey]['divider'] = divided_by
 
         elif 'true' in instruction:
 
@@ -53,9 +54,12 @@ operators = {
     '%' : operator.mod,
 }
 
-round = 0
+memo = {}
 
-while round < 20:
+round = 0
+mod_factor = math.prod([monkeys[monkey]['divider'] for monkey in monkeys])
+
+while round < 1000:
     round += 1 
     print('Round: ', round)
 
@@ -83,19 +87,19 @@ while round < 20:
           # Perform operation
           op1, operation, op2 = int(operation_to_perform[0]), operation_to_perform[1], int(operation_to_perform[2])
           new_worry_level = operators[operation](op1, op2)
-
-          # Monkey gets bored with the item. Divide the 'new_worry_level' by 3 and round down
-          new_worry_level = operators["/"](new_worry_level, 3)
           
-          # Check if current worry level is divisible by 'divided_by'
-          divided_by = monkey['test']
-          if operators["%"](new_worry_level, divided_by) == 0:
+          new_worry_level = new_worry_level % mod_factor
+
+          divided_by = monkey['divider']
+          module = operators["%"](new_worry_level, divided_by)
+          if module == 0:
               throw_to = monkey['throw_to']['true']
           else:
               throw_to = monkey['throw_to']['false']
-          
+
           # Add item to the new monkey
           monkeys[throw_to]['items'].append(new_worry_level)
+          
           # Remove item from the current monkey
           monkey['items'].pop()
 
