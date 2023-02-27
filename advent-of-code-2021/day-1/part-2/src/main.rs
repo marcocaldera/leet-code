@@ -13,7 +13,7 @@ fn main() {
 
     for (index, depth) in content.lines().into_iter().enumerate() {
         
-        let depth: u32 = depth.parse().expect("This is not a number!");
+       let depth: u32 = depth.parse().expect("This is not a number!");
 
         let position = index % 3;
 
