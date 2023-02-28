@@ -21,7 +21,6 @@ fn main() {
         "up" => direction.1 -= amount,
         "down" => direction.1 += amount,
         _ => println!("Fuck"),
-
        } 
 
     }
